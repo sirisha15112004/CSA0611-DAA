@@ -13,4 +13,4 @@ points = [(1, 2), (4, 5), (7, 8), (3, 1)]
 result = closest_pair(points)
 print(f"Closest pair: {result[0]} Minimum distance: {result[1]}")
 output: pair:(1,2),(3,1)
-             Minimum distance:2.23606797749979
+     Minimum distance:2.23606797749979

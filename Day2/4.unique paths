@@ -1,0 +1,7 @@
+def unique_paths(m, n):
+    from math import comb
+    return comb(m + n - 2, n - 1)
+print(unique_paths(7, 3))  
+print(unique_paths(3, 2))  
+Output: 28
+        3

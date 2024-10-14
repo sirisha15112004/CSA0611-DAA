@@ -8,5 +8,7 @@ def champagne_tower(poured, query_row, query_glass):
                 tower[r + 1][c] += overflow
                 tower[r + 1][c + 1] += overflow
     return min(1, tower[query_row][query_glass])
-print(champagne_tower(4, 2, 0))  
-Output: 0.25
+print(champagneTower(1, 1, 1))  
+print(champagneTower(2, 1, 1)) 
+Output: 0.00000
+        0.50000

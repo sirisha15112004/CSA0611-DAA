@@ -1,0 +1,22 @@
+def game_of_life(board):
+    neighbors = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (1,-1), (-1,1), (-1,-1)]
+    m, n = len(board), len(board[0])
+    next_state = [[0]*n for _ in range(m)]
+    for i in range(m):
+        for j in range(n):
+            live_neighbors = sum((0 <= i+x < m and 0 <= j+y < n and abs(board[i+x][j+y]) == 1) for x, y in neighbors)
+            if board[i][j] == 1 and live_neighbors in (2, 3):
+                next_state[i][j] = 1
+            elif board[i][j] == 0 and live_neighbors == 3:
+                next_state[i][j] = 1
+    for i in range(m):
+        for j in range(n):
+            board[i][j] = next_state[i][j]
+board1 = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+game_of_life(board1)
+print(board1)  
+board2 = [[1,1],[1,0]]
+game_of_life(board2)
+print(board2)  
+Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+        [[1,1],[1,1]]

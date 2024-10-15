@@ -1,0 +1,37 @@
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left = arr[:mid]
+        right = arr[mid:]
+        merge_sort(left)
+        merge_sort(right)
+        i = j = k = 0
+        global comparisons
+        while i < len(left) and j < len(right):
+            comparisons += 1
+            if left[i] < right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+        while i < len(left):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            arr[k] = right[j]
+            j += 1
+            k += 1
+comparisons = 0
+array1 = [12, 4, 78, 23, 45, 67, 89, 1]
+merge_sort(array1)
+print(f"Sorted array: {array1}, Comparisons: {comparisons}")
+comparisons = 0
+array2 = [38, 27, 43, 3, 9, 82, 10]
+merge_sort(array2)
+print(f"Sorted array: {array2}, Comparisons: {comparisons}")
+Outptut:
+Sorted array: [1, 4, 12, 23, 45, 67, 78, 89], Comparisons: 16
+Sorted array: [3, 9, 10, 27, 38, 43, 82], Comparisons: 13

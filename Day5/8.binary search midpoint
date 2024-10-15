@@ -1,0 +1,29 @@
+def binary_search(arr, key):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == key:
+            return mid
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+arrays = [
+    ([3, 9, 14, 19, 25, 31, 42, 47, 53], 31),
+    ([13, 19, 24, 29, 35, 41, 42], 42),
+    ([20, 40, 60, 80, 100, 120], 60)
+]
+for arr, key in arrays:
+    position = binary_search(arr, key)
+    print(f"Element {key} found at index: {position}")
+Output:
+Element 31 found at index: 5
+Element 42 found at index: 6
+Element 60 found at index: 2
+
+
+for arr, key in arrays:
+    position = binary_search(arr, key)
+    print(f"Element {key} found at index: {position}")
+

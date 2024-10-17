@@ -23,7 +23,3 @@ Element 42 found at index: 6
 Element 60 found at index: 2
 
 
-for arr, key in arrays:
-    position = binary_search(arr, key)
-    print(f"Element {key} found at index: {position}")
-

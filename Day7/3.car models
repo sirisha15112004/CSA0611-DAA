@@ -1,0 +1,19 @@
+import numpy as np
+from itertools import product
+station_times = [[5, 9, 3], [6, 8, 4], [7, 6, 5]]
+transfer_times = np.array([[0, 2, 3], [2, 0, 4], [3, 4, 0]])
+dependencies = [(0, 1), (1, 2)]
+def total_time(schedule):
+    time = 0
+    for i in range(len(schedule)):
+        time += station_times[schedule[i]][i]
+        if i > 0:
+            time += transfer_times[schedule[i-1]][schedule[i]]
+    return time
+schedules = product(range(3), repeat=3)
+optimal_schedule = min(schedules, key=total_time)
+print("Optimal Schedule:", optimal_schedule)
+print("Minimum Production Time:", total_time(optimal_schedule))
+output:
+Optimal Schedule: (0, 0, 0)
+Minimum Production Time: 17

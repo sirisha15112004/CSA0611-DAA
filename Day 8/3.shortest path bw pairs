@@ -1,0 +1,35 @@
+def optimal_bst(keys, freq):
+    n = len(keys)
+    cost = [[0] * (n + 1) for _ in range(n + 1)]
+    root = [[0] * (n + 1) for _ in range(n + 1)]
+    for i in range(n):
+        cost[i][i + 1] = freq[i]
+    for length in range(2, n + 1):
+        for i in range(n - length + 1):
+            j = i + length
+            cost[i][j] = float('inf')
+            for r in range(i + 1, j + 1):
+                c = cost[i][r - 1] + cost[r][j] + sum(freq[i:j])
+                if c < cost[i][j]:
+                    cost[i][j] = c
+                    root[i][j] = r
+    return cost[0][n], root
+keys = ['A', 'B', 'C', 'D']
+freq = [0.1, 0.2, 0.4, 0.3]
+total_cost, root_matrix = optimal_bst(keys, freq)
+print(f"Total Cost: {total_cost}")
+print("Cost Table:")
+for row in total_cost:
+    print(row)
+print("Root Table:")
+for row in root_matrix:
+    print(row)
+print(optimal_bst([10, 12], [34, 50]))  
+print(optimal_bst([10, 12, 20], [34, 8, 50]))  
+Output:Distance Matrix Before:
+[[0. 2. 5. 5. 4.]
+ [2. 0. 3. 3. 2.]
+[5. 3. 0. 1. 2.]
+ [5. 3. 1. 0. 1.]
+[4. 2. 2. 1. 0.]]
+Shortest path from C to A: 5.0
